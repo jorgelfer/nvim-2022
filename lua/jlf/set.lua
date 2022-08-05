@@ -36,4 +36,3 @@ vim.opt.backup = false
 
 -- clipboard support
 vim.opt.clipboard = "unnamedplus"
-
