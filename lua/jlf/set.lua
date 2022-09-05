@@ -36,3 +36,7 @@ vim.opt.backup = false
 
 -- clipboard support
 vim.opt.clipboard = "unnamedplus"
+
+-- encoding
+vim.opt.encoding = 'utf8'
+vim.opt.guifont = "Agave:h11"
