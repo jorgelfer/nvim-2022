@@ -1,6 +1,7 @@
 local nnoremap = require("jlf.keymap").nnoremap
 local tnoremap = require("jlf.keymap").tnoremap
 local inoremap = require("jlf.keymap").inoremap
+local nmap = require("jlf.keymap").nmap
 
 nnoremap("<leader>pv", "<cmd>Ex<CR>") 
 
@@ -9,6 +10,8 @@ nnoremap("<C-J>", "<C-W><C-J>")
 nnoremap("<C-K>", "<C-W><C-K>") 
 nnoremap("<C-L>", "<C-W><C-L>") 
 nnoremap("<C-H>", "<C-W><C-H>") 
+nnoremap("N", "<cmd>vertical resize +3<cr>")
+nnoremap("M", "<cmd>vertical resize -3<cr>")
 
 -- remap for vim fugitive
 nnoremap("<leader>s", "<cmd>G<CR>") 

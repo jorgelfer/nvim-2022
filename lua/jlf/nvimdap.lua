@@ -11,7 +11,6 @@ nnoremap("<F12>", "<cmd>lua require('dap').step_out()<CR>")
 nnoremap("<F9>", "<cmd>lua require('dap').toggle_breakpoint()<CR>")
 nnoremap("<leader>B", "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
 
-
 -- not sure what this is for
 nnoremap("<leader>dr", "<cmd>lua require('dap').repl.open()<CR>")
 nnoremap("<leader>ee", "<cmd>lua require('dap').terminate()<CR>")
@@ -78,8 +77,10 @@ dapui.setup({
 })
 
 -- hover
-nnoremap("<leader><CR>", "<cmd>lua require('dapui.variables').hover()<CR>")
-vnoremap("<leader><CR>", "<cmd>lua require('dapui.variables').visual_hover()<CR>")
+-- nnoremap("<leader><CR>", "<cmd>lua require('dapui.variables').hover()<CR>")
+-- vnoremap("<leader><CR>", "<cmd>lua require('dapui.variables').visual_hover()<CR>")
+nnoremap("<leader><CR>", "<cmd>lua require('dapui').eval()<CR>")
+vnoremap("<leader><CR>", "<cmd>lua require('dapui').eval()<CR>")
 
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
