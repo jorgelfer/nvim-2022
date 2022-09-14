@@ -36,7 +36,7 @@ return require('packer').startup(function(use)
     use 'ryanoasis/vim-devicons'
     -- nvim dap
     use 'mfussenegger/nvim-dap'
-    use 'leoluz/nvim-dap-go'
+    use 'mfussenegger/nvim-dap-python'
     use 'rcarriga/nvim-dap-ui'
     use 'theHamsta/nvim-dap-virtual-text'
     use 'nvim-telescope/telescope-dap.nvim'
