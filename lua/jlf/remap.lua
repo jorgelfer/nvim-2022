@@ -10,7 +10,7 @@ nnoremap("<C-J>", "<C-W><C-J>")
 nnoremap("<C-K>", "<C-W><C-K>") 
 nnoremap("<C-L>", "<C-W><C-L>") 
 nnoremap("<C-H>", "<C-W><C-H>") 
-nnoremap("N", "<cmd>vertical resize +3<cr>")
+nnoremap("<C-N>", "<cmd>vertical resize +3<cr>")
 nnoremap("M", "<cmd>vertical resize -3<cr>")
 
 -- remap for vim fugitive
