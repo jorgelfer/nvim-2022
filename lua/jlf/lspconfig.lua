@@ -38,8 +38,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', 'gk', vim.diagnostic.goto_prev, bufopts)
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local lsp_flags = {
     -- This is the default in Nvim 0.7+
