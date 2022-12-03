@@ -16,13 +16,19 @@ return require('packer').startup(function(use)
 	use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
 	use 'L3MON4D3/LuaSnip' -- Snippets plugin
     use 'onsails/lspkind-nvim' --VS code like pictograms
-    -- Treesitter for better highlighting
-    use 'nvim-treesitter/nvim-treesitter'
+    -- treesitter
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function()
+            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            ts_update()
+        end,
+    }
     -- lualine
-	use {
-	  'nvim-lualine/lualine.nvim',
-	  requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-	}
+    use {
+      'nvim-lualine/lualine.nvim',
+      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
     -- automatic pair generation (brackets, etc.)
     use 'Raimondi/delimitMate'
     -- telescope
@@ -32,16 +38,10 @@ return require('packer').startup(function(use)
 	  requires = { {'nvim-lua/plenary.nvim'} }
 	}
     use 'sharkdp/fd'
-    -- devicodes
-    use 'ryanoasis/vim-devicons'
-    -- nvim dap
-    use 'mfussenegger/nvim-dap'
-    use 'mfussenegger/nvim-dap-python'
-    use 'rcarriga/nvim-dap-ui'
-    use 'theHamsta/nvim-dap-virtual-text'
-    use 'nvim-telescope/telescope-dap.nvim'
     -- comment
-    use 'preservim/nerdcommenter' 
+    use 'preservim/nerdcommenter'
     -- pairs
-    use 'machakann/vim-sandwich' 
+    use 'machakann/vim-sandwich'
+    -- julia
+    use 'JuliaEditorSupport/julia-vim'
 end)

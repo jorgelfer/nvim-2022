@@ -1,5 +1,5 @@
 local nvim_lsp = require('lspconfig')
-local servers = {'pylsp'}
+local servers = {'pylsp', 'sumneko_lua', 'julials'}
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -24,7 +24,6 @@ vim.diagnostic.config({
 local on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-    
     -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local bufopts = { noremap=true, silent=true, buffer=bufnr }
@@ -38,23 +37,11 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', 'gk', vim.diagnostic.goto_prev, bufopts)
 end
 
-capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local lsp_flags = {
     -- This is the default in Nvim 0.7+
     debounce_text_changes = 150,
-}
-
--- specific for pylsp
-local settings = {
-    pylsp = {
-      plugins = {
-        pycodestyle = {
-          ignore = {'W391'},
-          maxLineLength = 200
-        }
-      }
-    }
 }
 
 for _, lsp in ipairs(servers) do
@@ -64,10 +51,46 @@ for _, lsp in ipairs(servers) do
         capabilities = capabilities,
         on_attach = on_attach,
         flags = lsp_flags,
-        settings = settings
     }
 end
 
+-- specific for pylsp
+require'lspconfig'.pylsp.setup{
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          ignore = {'W391'},
+          maxLineLength = 200
+        }
+      }
+    }
+  }
+}
+
+-- specific for lua
+require'lspconfig'.sumneko_lua.setup {
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+}
 
 -- nvim-cmp
 local cmp = require('cmp')
