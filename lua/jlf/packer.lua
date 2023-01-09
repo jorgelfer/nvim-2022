@@ -44,4 +44,6 @@ return require('packer').startup(function(use)
     use 'machakann/vim-sandwich'
     -- julia
     use 'JuliaEditorSupport/julia-vim'
+    -- REPL
+    use {'hkupty/iron.nvim'}
 end)

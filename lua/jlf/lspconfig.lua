@@ -35,6 +35,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', 'gf', vim.lsp.buf.formatting, bufopts)
     vim.keymap.set('n', 'gj', vim.diagnostic.goto_next, bufopts)
     vim.keymap.set('n', 'gk', vim.diagnostic.goto_prev, bufopts)
+    vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, bufopts)
 end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
